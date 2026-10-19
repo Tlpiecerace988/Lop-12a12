@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lớp 12A12 (2026 - 2027)</title>
+    <!-- Font Google Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #121212;
+            --bg-card: #1e1e1e;
+            --accent-beige: #f5f5dc;
+            --beige-muted: #d4c5b9;
+            --beige-dark: #2a2826;
+            --text-light: #f5f5dc;
+            --text-dim: #b0a8a0;
+            --border-color: #33302c;
+            --gold-badge: #d4af37;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            padding-bottom: 50px;
+        }
+
+        header {
+            background-color: #000000;
+            border-bottom: 1px solid var(--border-color);
+            padding: 40px 20px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+            color: var(--accent-beige);
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        header p {
+            color: var(--text-dim);
+            font-size: 1.1rem;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 20px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background-color: var(--bg-card);
+            color: var(--beige-muted);
+            border: 1px solid var(--border-color);
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn:hover, .tab-btn.active {
+            background-color: var(--accent-beige);
+            color: var(--bg-dark);
+            border-color: var(--accent-beige);
+            box-shadow: 0 4px 15px rgba(245, 245, 220, 0.2);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .group-header {
+            background: linear-gradient(135deg, var(--beige-dark), var(--bg-card));
+            border-left: 4px solid var(--accent-beige);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+
+        .group-header h2 {
+            font-size: 1.8rem;
+            color: var(--accent-beige);
+        }
+
+        .grid-members {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .member-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .member-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent-beige);
+        }
+
+        .avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--accent-beige);
+            color: var(--bg-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .info h3 {
+            font-size: 1.1rem;
+            color: #ffffff;
+            margin-bottom: 4px;
+        }
+
+        .badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            background-color: rgba(212, 175, 55, 0.15);
+            color: var(--gold-badge);
+            border: 1px solid var(--gold-badge);
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>LỚP 12A12</h1>
+        <p>Năm học 2026 - 2027</p>
+    </header>
+
+    <div class="container">
+        <!-- Điều hướng các Tổ -->
+        <nav>
+            <button class="tab-btn active" onclick="openGroup(event, 'to1')">TỔ 1</button>
+            <button class="tab-btn" onclick="openGroup(event, 'to2')">TỔ 2</button>
+            <button class="tab-btn" onclick="openGroup(event, 'to3')">TỔ 3</button>
+            <button class="tab-btn" onclick="openGroup(event, 'to4')">TỔ 4</button>
+        </nav>
+
+        <!-- TỔ 1 -->
+        <div id="to1" class="tab-content active">
+            <div class="group-header">
+                <h2>TỔ 1</h2>
+                <p>Tổng số thành viên: 12 học sinh</p>
+            </div>
+            <div class="grid-members">
+                <div class="member-card"><div class="avatar">CC</div><div class="info"><h3>Chí Công</h3><span class="badge">Tổ trưởng T1</span></div></div>
+                <div class="member-card"><div class="avatar">QB</div><div class="info"><h3>Q.Bảo</h3><span class="badge">Lớp phó Lao động</span></div></div>
+                <div class="member-card"><div class="avatar">NH</div><div class="info"><h3>Nhật Hào</h3></div></div>
+                <div class="member-card"><div class="avatar">HD</div><div class="info"><h3>H.Duy</h3></div></div>
+                <div class="member-card"><div class="avatar">DD</div><div class="info"><h3>Dương Duy</h3></div></div>
+                <div class="member-card"><div class="avatar">PT</div><div class="info"><h3>Phú Trọng</h3></div></div>
+                <div class="member-card"><div class="avatar">ĐH</div><div class="info"><h3>Đức Huy</h3></div></div>
+                <div class="member-card"><div class="avatar">TP</div><div class="info"><h3>Thiên Phúc</h3></div></div>
+                <div class="member-card"><div class="avatar">NS</div><div class="info"><h3>Ngọc Sang</h3></div></div>
+                <div class="member-card"><div class="avatar">GH</div><div class="info"><h3>Gia Hân</h3><span class="badge">Lớp phó Học tập</span></div></div>
+                <div class="member-card"><div class="avatar">NH</div><div class="info"><h3>Nhật Huy</h3></div></div>
+                <div class="member-card"><div class="avatar">HT</div><div class="info"><h3>Hoàng Tiến</h3><span class="badge">Thủ quỹ</span></div></div>
+            </div>
+        </div>
+
+        <!-- TỔ 2 -->
+        <div id="to2" class="tab-content">
+            <div class="group-header">
+                <h2>TỔ 2</h2>
+                <p>Tổng số thành viên: 12 học sinh</p>
+            </div>
+            <div class="grid-members">
+                <div class="member-card"><div class="avatar">MX</div><div class="info"><h3>Mỹ Xuyên</h3><span class="badge">Tổ trưởng T2</span></div></div>
+                <div class="member-card"><div class="avatar">GM</div><div class="info"><h3>Gia Mẫn</h3></div></div>
+                <div class="member-card"><div class="avatar">TK</div><div class="info"><h3>Thanh Khiết</h3></div></div>
+                <div class="member-card"><div class="avatar">NV</div><div class="info"><h3>Nhã Vân</h3></div></div>
+                <div class="member-card"><div class="avatar">CT</div><div class="info"><h3>Cẩm Tiên</h3></div></div>
+                <div class="member-card"><div class="avatar">ĐN</div><div class="info"><h3>Đông Nhi</h3></div></div>
+                <div class="member-card"><div class="avatar">QK</div><div class="info"><h3>Quốc Khánh</h3></div></div>
+                <div class="member-card"><div class="avatar">CH</div><div class="info"><h3>Công Huy</h3></div></div>
+                <div class="member-card"><div class="avatar">NN</div><div class="info"><h3>Ngọc Nữ</h3></div></div>
+                <div class="member-card"><div class="avatar">HL</div><div class="info"><h3>Hồng Liên</h3></div></div>
+                <div class="member-card"><div class="avatar">KX</div><div class="info"><h3>Kim Xuyến</h3></div></div>
+                <div class="member-card"><div class="avatar">CD</div><div class="info"><h3>Công Danh</h3></div></div>
+            </div>
+        </div>
+
+        <!-- TỔ 3 -->
+        <div id="to3" class="tab-content">
+            <div class="group-header">
+                <h2>TỔ 3</h2>
+                <p>Tổng số thành viên: 12 học sinh</p>
+            </div>
+            <div class="grid-members">
+                <div class="member-card"><div class="avatar">QT</div><div class="info"><h3>Quỳnh Trâm</h3><span class="badge">Tổ trưởng T3</span></div></div>
+                <div class="member-card"><div class="avatar">YP</div><div class="info"><h3>Yến Phương</h3></div></div>
+                <div class="member-card"><div class="avatar">ĐH</div><div class="info"><h3>Diễm Hương</h3></div></div>
+                <div class="member-card"><div class="avatar">HN</div><div class="info"><h3>Huỳnh Như</h3></div></div>
+                <div class="member-card"><div class="avatar">TA</div><div class="info"><h3>Tường An</h3></div></div>
+                <div class="member-card"><div class="avatar">NT</div><div class="info"><h3>Ngọc Thanh</h3></div></div>
+                <div class="member-card"><div class="avatar">TL</div><div class="info"><h3>Thùy Lâm</h3></div></div>
+                <div class="member-card"><div class="avatar">TQ</div><div class="info"><h3>Trúc Quỳnh</h3></div></div>
+                <div class="member-card"><div class="avatar">BT</div><div class="info"><h3>Bé Thảo</h3></div></div>
+                <div class="member-card"><div class="avatar">CD</div><div class="info"><h3>Châu Duyên</h3><span class="badge">Phụ trách Văn nghệ</span></div></div>
+                <div class="member-card"><div class="avatar">NV</div><div class="info"><h3>Ngọc Vân</h3></div></div>
+                <div class="member-card"><div class="avatar">QM</div><div class="info"><h3>Quốc Minh</h3></div></div>
+            </div>
+        </div>
+
+        <!-- TỔ 4 -->
+        <div id="to4" class="tab-content">
+            <div class="group-header">
+                <h2>TỔ 4</h2>
+                <p>Tổng số thành viên: 12 học sinh</p>
+            </div>
+            <div class="grid-members">
+                <div class="member-card"><div class="avatar">GB</div><div class="info"><h3>Gia Bảo</h3><span class="badge">Tổ trưởng T4</span></div></div>
+                <div class="member-card"><div class="avatar">ĐT</div><div class="info"><h3>Diễm Thùy</h3><span class="badge">Lớp trưởng</span></div></div>
+                <div class="member-card"><div class="avatar">HN</div><div class="info"><h3>Hồng Ngọc</h3></div></div>
+                <div class="member-card"><div class="avatar">YS</div><div class="info"><h3>Y Sa</h3></div></div>
+                <div class="member-card"><div class="avatar">HL</div><div class="info"><h3>Hữu Lợi</h3><span class="badge">Lớp phó Trật tự</span></div></div>
+                <div class="member-card"><div class="avatar">TN</div><div class="info"><h3>Thành Nhân</h3></div></div>
+                <div class="member-card"><div class="avatar">NH</div><div class="info"><h3>Ngọc Hân</h3></div></div>
+                <div class="member-card"><div class="avatar">NC</div><div class="info"><h3>Ngọc Châm</h3></div></div>
+                <div class="member-card"><div class="avatar">ĐQ</div><div class="info"><h3>Đỗ Quyên</h3></div></div>
+                <div class="member-card"><div class="avatar">MT</div><div class="info"><h3>Minh Thư</h3></div></div>
+                <div class="member-card"><div class="avatar">NP</div><div class="info"><h3>Ngọc Phúc</h3></div></div>
+                <div class="member-card"><div class="avatar">TĐ</div><div class="info"><h3>Trường Duy</h3></div></div>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 - 2027 Tập thể lớp 12A12. Designed with Black & Beige Theme.</p>
+        </footer>
+    </div>
+
+    <script>
+        function openGroup(evt, groupName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+            document.getElementById(groupName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
+</body>
+</html>
