@@ -84,7 +84,7 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 0 20px;
         }
@@ -116,31 +116,57 @@
             color: var(--accent-beige);
         }
 
-        .grid-members {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
+        /* Khung hiển thị các bàn (cặp đôi) */
+        .desks-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
         }
 
-        .member-card {
+        .desk-row {
             background-color: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: 12px;
-            padding: 20px;
+            padding: 15px 20px;
             display: flex;
             align-items: center;
+            justify-content: space-between;
             gap: 15px;
-            transition: transform 0.2s, border-color 0.2s;
         }
 
-        .member-card:hover {
-            transform: translateY(-3px);
-            border-color: var(--accent-beige);
+        .desk-label {
+            background-color: var(--beige-dark);
+            color: var(--accent-beige);
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            flex-shrink: 0;
+            border: 1px solid var(--border-color);
+        }
+
+        .desk-seats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            width: 100%;
+        }
+
+        .member-card {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .avatar {
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             background-color: var(--accent-beige);
             color: var(--bg-dark);
@@ -148,24 +174,24 @@
             align-items: center;
             justify-content: center;
             font-weight: 700;
-            font-size: 1.2rem;
+            font-size: 1rem;
             flex-shrink: 0;
         }
 
         .info h3 {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: #ffffff;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
         }
 
         .badge {
             display: inline-block;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             background-color: rgba(212, 175, 55, 0.15);
             color: var(--gold-badge);
             border: 1px solid var(--gold-badge);
-            padding: 2px 8px;
-            border-radius: 12px;
+            padding: 1px 6px;
+            border-radius: 10px;
             font-weight: 600;
         }
 
@@ -176,6 +202,16 @@
             font-size: 0.9rem;
             border-top: 1px solid var(--border-color);
             padding-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .desk-row {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .desk-seats {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -199,21 +235,33 @@
         <div id="to1" class="tab-content active">
             <div class="group-header">
                 <h2>TỔ 1</h2>
-                <p>Tổng số thành viên: 12 học sinh</p>
+                <p>Sơ đồ 6 cặp bàn (Từ bàn đầu đến bàn cuối)</p>
             </div>
-            <div class="grid-members">
-                <div class="member-card"><div class="avatar">CC</div><div class="info"><h3>Chí Công</h3><span class="badge">Tổ trưởng T1</span></div></div>
-                <div class="member-card"><div class="avatar">QB</div><div class="info"><h3>Q.Bảo</h3><span class="badge">Lớp phó Lao động</span></div></div>
-                <div class="member-card"><div class="avatar">NH</div><div class="info"><h3>Nhật Hào</h3></div></div>
-                <div class="member-card"><div class="avatar">HD</div><div class="info"><h3>H.Duy</h3></div></div>
-                <div class="member-card"><div class="avatar">DD</div><div class="info"><h3>Dương Duy</h3></div></div>
-                <div class="member-card"><div class="avatar">PT</div><div class="info"><h3>Phú Trọng</h3></div></div>
-                <div class="member-card"><div class="avatar">ĐH</div><div class="info"><h3>Đức Huy</h3></div></div>
-                <div class="member-card"><div class="avatar">TP</div><div class="info"><h3>Thiên Phúc</h3></div></div>
-                <div class="member-card"><div class="avatar">NS</div><div class="info"><h3>Ngọc Sang</h3></div></div>
-                <div class="member-card"><div class="avatar">GH</div><div class="info"><h3>Gia Hân</h3><span class="badge">Lớp phó Học tập</span></div></div>
-                <div class="member-card"><div class="avatar">NH</div><div class="info"><h3>Nhật Huy</h3></div></div>
-                <div class="member-card"><div class="avatar">HT</div><div class="info"><h3>Hoàng Tiến</h3><span class="badge">Thủ quỹ</span></div></div>
+            <div class="desks-container">
+                <div class="desk-row"><div class="desk-label">Bàn 1</div><div class="desk-seats">
+                    <div class="member-card"><div class="avatar">HT</div><div class="info"><h3>Hoàng Tiến</h3><span class="badge">Thủ quỹ</span></div></div>
+                    <div class="member-card"><div class="avatar">NH</div><div class="info"><h3>Nhật Huy</h3></div></div>
+                </div></div>
+                <div class="desk-row"><div class="desk-label">Bàn 2</div><div class="desk-seats">
+                    <div class="member-card"><div class="avatar">GH</div><div class="info"><h3>Gia Hân</h3><span class="badge">Lớp phó Học tập</span></div></div>
+                    <div class="member-card"><div class="avatar">NS</div><div class="info"><h3>Ngọc Sang</h3></div></div>
+                </div></div>
+                <div class="desk-row"><div class="desk-label">Bàn 3</div><div class="desk-seats">
+                    <div class="member-card"><div class="avatar">TP</div><div class="info"><h3>Thiên Phúc</h3></div></div>
+                    <div class="member-card"><div class="avatar">ĐH</div><div class="info"><h3>Đức Huy</h3></div></div>
+                </div></div>
+                <div class="desk-row"><div class="desk-label">Bàn 4</div><div class="desk-seats">
+                    <div class="member-card"><div class="avatar">PT</div><div class="info"><h3>Phú Trọng</h3></div></div>
+                    <div class="member-card"><div class="avatar">DD</div><div class="info"><h3>Dương Duy</h3></div></div>
+                </div></div>
+                <div class="desk-row"><div class="desk-label">Bàn 5</div><div class="desk-seats">
+                    <div class="member-card"><div class="avatar">HD</div><div class="info"><h3>H.Duy</h3></div></div>
+                    <div class="member-card"><div class="avatar">CC</div><div class="info"><h3>Chí Công</h3><span class="badge">Tổ trưởng T1</span></div></div>
+                </div></div>
+                <div class="desk-row"><div class="desk-label">Bàn 6</div><div class="desk-seats">
+                    <div class="member-card"><div class="avatar">NH</div><div class="info"><h3>Nhật Hào</h3></div></div>
+                    <div class="member-card"><div class="avatar">QB</div><div class="info"><h3>Q.Bảo</h3><span class="badge">Lớp phó Lao động</span></div></div>
+                </div></div>
             </div>
         </div>
 
@@ -221,21 +269,33 @@
         <div id="to2" class="tab-content">
             <div class="group-header">
                 <h2>TỔ 2</h2>
-                <p>Tổng số thành viên: 12 học sinh</p>
+                <p>Sơ đồ 6 cặp bàn (Từ bàn đầu đến bàn cuối)</p>
             </div>
-            <div class="grid-members">
-                <div class="member-card"><div class="avatar">MX</div><div class="info"><h3>Mỹ Xuyên</h3><span class="badge">Tổ trưởng T2</span></div></div>
-                <div class="member-card"><div class="avatar">GM</div><div class="info"><h3>Gia Mẫn</h3></div></div>
-                <div class="member-card"><div class="avatar">TK</div><div class="info"><h3>Thanh Khiết</h3></div></div>
-                <div class="member-card"><div class="avatar">NV</div><div class="info"><h3>Nhã Vân</h3></div></div>
-                <div class="member-card"><div class="avatar">CT</div><div class="info"><h3>Cẩm Tiên</h3></div></div>
-                <div class="member-card"><div class="avatar">ĐN</div><div class="info"><h3>Đông Nhi</h3></div></div>
-                <div class="member-card"><div class="avatar">QK</div><div class="info"><h3>Quốc Khánh</h3></div></div>
-                <div class="member-card"><div class="avatar">CH</div><div class="info"><h3>Công Huy</h3></div></div>
-                <div class="member-card"><div class="avatar">NN</div><div class="info"><h3>Ngọc Nữ</h3></div></div>
-                <div class="member-card"><div class="avatar">HL</div><div class="info"><h3>Hồng Liên</h3></div></div>
-                <div class="member-card"><div class="avatar">KX</div><div class="info"><h3>Kim Xuyến</h3></div></div>
-                <div class="member-card"><div class="avatar">CD</div><div class="info"><h3>Công Danh</h3></div></div>
+            <div class="desks-container">
+                <div class="desk-row"><div class="desk-label">Bàn 1</div><div class="desk-seats">
+                    <div class="member-card"><div class="avatar">CD</div><div class="info"><h3>Công Danh</h3></div></div>
+                    <div class="member-card"><div class="avatar">KX</div><div class="info"><h3>Kim Xuyến</h3></div></div>
+                </div></div>
+                <div class="desk-row"><div class="desk-label">Bàn 2</div><div class="desk-seats">
+                    <div class="member-card"><div class="avatar">HL</div><div class="info"><h3>Hồng Liên</h3></div></div>
+                    <div class="member-card"><div class="avatar">MX</div><div class="info"><h3>Mỹ Xuyên</h3><span class="badge">Tổ trưởng T2</span></div></div>
+                </div></div>
+                <div class="desk-row"><div class="desk-label">Bàn 3</div><div class="desk-seats">
+                    <div class="member-card"><div class="avatar">NN</div><div class="info"><h3>Ngọc Nữ</h3></div></div>
+                    <div class="member-card"><div class="avatar">CH</div><div class="info"><h3>Công Huy</h3></div></div>
+                </div></div>
+                <div class="desk-row"><div class="desk-label">Bàn 4</div><div class="desk-seats">
+                    <div class="member-card"><div class="avatar">QK</div><div class="info"><h3>Quốc Khánh</h3></div></div>
+                    <div class="member-card"><div class="avatar">ĐN</div><div class="info"><h3>Đông Nhi</h3></div></div>
+                </div></div>
+                <div class="desk-row"><div class="desk-label">Bàn 5</div><div class="desk-seats">
+                    <div class="member-card"><div class="avatar">CT</div><div class="info"><h3>Cẩm Tiên</h3></div></div>
+                    <div class="member-card"><div class="avatar">NV</div><div class="info"><h3>Nhã Vân</h3></div></div>
+                </div></div>
+                <div class="desk-row"><div class="desk-label">Bàn 6</div><div class="desk-seats">
+                    <div class="member-card"><div class="avatar">TK</div><div class="info"><h3>Thanh Khiết</h3></div></div>
+                    <div class="member-card"><div class="avatar">GM</div><div class="info"><h3>Gia Mẫn</h3></div></div>
+                </div></div>
             </div>
         </div>
 
@@ -243,21 +303,33 @@
         <div id="to3" class="tab-content">
             <div class="group-header">
                 <h2>TỔ 3</h2>
-                <p>Tổng số thành viên: 12 học sinh</p>
+                <p>Sơ đồ 6 cặp bàn (Từ bàn đầu đến bàn cuối)</p>
             </div>
-            <div class="grid-members">
-                <div class="member-card"><div class="avatar">QT</div><div class="info"><h3>Quỳnh Trâm</h3><span class="badge">Tổ trưởng T3</span></div></div>
-                <div class="member-card"><div class="avatar">YP</div><div class="info"><h3>Yến Phương</h3></div></div>
-                <div class="member-card"><div class="avatar">ĐH</div><div class="info"><h3>Diễm Hương</h3></div></div>
-                <div class="member-card"><div class="avatar">HN</div><div class="info"><h3>Huỳnh Như</h3></div></div>
-                <div class="member-card"><div class="avatar">TA</div><div class="info"><h3>Tường An</h3></div></div>
-                <div class="member-card"><div class="avatar">NT</div><div class="info"><h3>Ngọc Thanh</h3></div></div>
-                <div class="member-card"><div class="avatar">TL</div><div class="info"><h3>Thùy Lâm</h3></div></div>
-                <div class="member-card"><div class="avatar">TQ</div><div class="info"><h3>Trúc Quỳnh</h3></div></div>
-                <div class="member-card"><div class="avatar">BT</div><div class="info"><h3>Bé Thảo</h3></div></div>
-                <div class="member-card"><div class="avatar">CD</div><div class="info"><h3>Châu Duyên</h3><span class="badge">Phụ trách Văn nghệ</span></div></div>
-                <div class="member-card"><div class="avatar">NV</div><div class="info"><h3>Ngọc Vân</h3></div></div>
-                <div class="member-card"><div class="avatar">QM</div><div class="info"><h3>Quốc Minh</h3></div></div>
+            <div class="desks-container">
+                <div class="desk-row"><div class="desk-label">Bàn 1</div><div class="desk-seats">
+                    <div class="member-card"><div class="avatar">NV</div><div class="info"><h3>Ngọc Vân</h3></div></div>
+                    <div class="member-card"><div class="avatar">BT</div><div class="info"><h3>Bé Thảo</h3></div></div>
+                </div></div>
+                <div class="desk-row"><div class="desk-label">Bàn 2</div><div class="desk-seats">
+                    <div class="member-card"><div class="avatar">QT</div><div class="info"><h3>Quỳnh Trâm</h3><span class="badge">Tổ trưởng T3</span></div></div>
+                    <div class="member-card"><div class="avatar">TQ</div><div class="info"><h3>Trúc Quỳnh</h3></div></div>
+                </div></div>
+                <div class="desk-row"><div class="desk-label">Bàn 3</div><div class="desk-seats">
+                    <div class="member-card"><div class="avatar">TL</div><div class="info"><h3>Thùy Lâm</h3></div></div>
+                    <div class="member-card"><div class="avatar">NT</div><div class="info"><h3>Ngọc Thanh</h3></div></div>
+                </div></div>
+                <div class="desk-row"><div class="desk-label">Bàn 4</div><div class="desk-seats">
+                    <div class="member-card"><div class="avatar">TA</div><div class="info"><h3>Tường An</h3></div></div>
+                    <div class="member-card"><div class="avatar">HN</div><div class="info"><h3>Huỳnh Như</h3></div></div>
+                </div></div>
+                <div class="desk-row"><div class="desk-label">Bàn 5</div><div class="desk-seats">
+                    <div class="member-card"><div class="avatar">ĐH</div><div class="info"><h3>Diễm Hương</h3></div></div>
+                    <div class="member-card"><div class="avatar">YP</div><div class="info"><h3>Yến Phương</h3></div></div>
+                </div></div>
+                <div class="desk-row"><div class="desk-label">Bàn 6</div><div class="desk-seats">
+                    <div class="member-card"><div class="avatar">CD</div><div class="info"><h3>Châu Duyên</h3><span class="badge">Văn nghệ</span></div></div>
+                    <div class="member-card"><div class="avatar">QM</div><div class="info"><h3>Quốc Minh</h3></div></div>
+                </div></div>
             </div>
         </div>
 
@@ -265,21 +337,33 @@
         <div id="to4" class="tab-content">
             <div class="group-header">
                 <h2>TỔ 4</h2>
-                <p>Tổng số thành viên: 12 học sinh</p>
+                <p>Sơ đồ 6 cặp bàn (Từ bàn đầu đến bàn cuối)</p>
             </div>
-            <div class="grid-members">
-                <div class="member-card"><div class="avatar">GB</div><div class="info"><h3>Gia Bảo</h3><span class="badge">Tổ trưởng T4</span></div></div>
-                <div class="member-card"><div class="avatar">ĐT</div><div class="info"><h3>Diễm Thùy</h3><span class="badge">Lớp trưởng</span></div></div>
-                <div class="member-card"><div class="avatar">HN</div><div class="info"><h3>Hồng Ngọc</h3></div></div>
-                <div class="member-card"><div class="avatar">YS</div><div class="info"><h3>Y Sa</h3></div></div>
-                <div class="member-card"><div class="avatar">HL</div><div class="info"><h3>Hữu Lợi</h3><span class="badge">Lớp phó Trật tự</span></div></div>
-                <div class="member-card"><div class="avatar">TN</div><div class="info"><h3>Thành Nhân</h3></div></div>
-                <div class="member-card"><div class="avatar">NH</div><div class="info"><h3>Ngọc Hân</h3></div></div>
-                <div class="member-card"><div class="avatar">NC</div><div class="info"><h3>Ngọc Châm</h3></div></div>
-                <div class="member-card"><div class="avatar">ĐQ</div><div class="info"><h3>Đỗ Quyên</h3></div></div>
-                <div class="member-card"><div class="avatar">MT</div><div class="info"><h3>Minh Thư</h3></div></div>
-                <div class="member-card"><div class="avatar">NP</div><div class="info"><h3>Ngọc Phúc</h3></div></div>
-                <div class="member-card"><div class="avatar">TĐ</div><div class="info"><h3>Trường Duy</h3></div></div>
+            <div class="desks-container">
+                <div class="desk-row"><div class="desk-label">Bàn 1</div><div class="desk-seats">
+                    <div class="member-card"><div class="avatar">NC</div><div class="info"><h3>Ngọc Châm</h3></div></div>
+                    <div class="member-card"><div class="avatar">NH</div><div class="info"><h3>Ngọc Hân</h3></div></div>
+                </div></div>
+                <div class="desk-row"><div class="desk-label">Bàn 2</div><div class="desk-seats">
+                    <div class="member-card"><div class="avatar">TN</div><div class="info"><h3>Thành Nhân</h3></div></div>
+                    <div class="member-card"><div class="avatar">HL</div><div class="info"><h3>Hữu Lợi</h3><span class="badge">Lớp phó</span></div></div>
+                </div></div>
+                <div class="desk-row"><div class="desk-label">Bàn 3</div><div class="desk-seats">
+                    <div class="member-card"><div class="avatar">YS</div><div class="info"><h3>Y Sa</h3></div></div>
+                    <div class="member-card"><div class="avatar">HN</div><div class="info"><h3>Hồng Ngọc</h3></div></div>
+                </div></div>
+                <div class="desk-row"><div class="desk-label">Bàn 4</div><div class="desk-seats">
+                    <div class="member-card"><div class="avatar">ĐT</div><div class="info"><h3>Diễm Thùy</h3><span class="badge">Lớp trưởng</span></div></div>
+                    <div class="member-card"><div class="avatar">GB</div><div class="info"><h3>Gia Bảo</h3><span class="badge">Tổ trưởng T4</span></div></div>
+                </div></div>
+                <div class="desk-row"><div class="desk-label">Bàn 5</div><div class="desk-seats">
+                    <div class="member-card"><div class="avatar">TĐ</div><div class="info"><h3>Trường Duy</h3></div></div>
+                    <div class="member-card"><div class="avatar">NP</div><div class="info"><h3>Ngọc Phúc</h3></div></div>
+                </div></div>
+                <div class="desk-row"><div class="desk-label">Bàn 6</div><div class="desk-seats">
+                    <div class="member-card"><div class="avatar">MT</div><div class="info"><h3>Minh Thư</h3></div></div>
+                    <div class="member-card"><div class="avatar">ĐQ</div><div class="info"><h3>Đỗ Quyên</h3></div></div>
+                </div></div>
             </div>
         </div>
 
@@ -304,4 +388,5 @@
         }
     </script>
 </body>
-</html>
+    </html>
+    
